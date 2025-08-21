@@ -76,6 +76,7 @@ const EmployerDashboard = () => {
 
   const [dashboardData, setDashboardData] = useState(null);
   const [isLoading, setIsLoading] = useState(true);
+  const [testData, setTestData] = useState(null);
 
   const getDashboardOverview = async () => {
     try {
@@ -91,6 +92,16 @@ const EmployerDashboard = () => {
       console.error("Dashboard fetch error:", error);
     } finally {
       setIsLoading(false);
+    }
+  };
+
+  const testJobsInDatabase = async () => {
+    try {
+      const response = await axiosInstance.get(API_PATHS.DASHBOARD.TEST_JOBS);
+      console.log("Test Jobs Response:", response.data);
+      setTestData(response.data);
+    } catch (error) {
+      console.error("Test jobs error:", error);
     }
   };
 
@@ -111,6 +122,34 @@ const EmployerDashboard = () => {
         <LoadingSpinner />
       ) : (
         <div className="max-wp7xl mx-auto space-y-8 mb-96">
+          {/* Debug Test Button */}
+          <div className="bg-yellow-50 border border-yellow-200 rounded-lg p-4">
+            <h3 className="text-lg font-semibold text-yellow-800 mb-2">Jobs in Database</h3>
+            <button 
+              onClick={testJobsInDatabase}
+              className="bg-yellow-500 hover:bg-yellow-600 text-white px-4 py-2 rounded-md text-sm"
+            >
+              Jobs in Database
+            </button>
+            {testData && (
+              <div className="mt-4 text-sm">
+                <p><strong>Total Jobs in DB:</strong> {testData.totalJobsInDatabase}</p>
+                <p><strong>Your Jobs:</strong> {testData.userJobs}</p>
+                <p><strong>Current User:</strong> {testData.currentUser?.name} ({testData.currentUser?.role})</p>
+                {testData.userJobsData.length > 0 && (
+                  <div className="mt-2">
+                    <p><strong>Your Jobs:</strong></p>
+                    <ul className="list-disc list-inside">
+                      {testData.userJobsData.map((job, index) => (
+                        <li key={index}>{job.title} - {job.location}</li>
+                      ))}
+                    </ul>
+                  </div>
+                )}
+              </div>
+            )}
+          </div>
+
           {/* dashboard stats  */}
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
             <StatCard

@@ -12,6 +12,7 @@ export const API_PATHS = {
 
     DASHBOARD:{
         OVERVIEW:`/api/analytics/overview`,
+        TEST_JOBS:`/api/analytics/test-jobs`,
     },
 
     JOBS:{

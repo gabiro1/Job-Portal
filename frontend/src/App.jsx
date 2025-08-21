@@ -8,8 +8,8 @@ import JobDetails from './pages/JobSeeker/JobDetails'
 import SavedJob from './pages/JobSeeker/SavedJob'
 import UserProfile from './pages/JobSeeker/UserProfile'
 import EmployerDashboard from './pages/Employer/EmployerDashboard'
-import JobPostingForm from './pages/employer/JobPostingForm'
-import ManageJobs from './pages/employer/ManageJobs'
+import JobPostingForm from './pages/Employer/JobPostingForm'
+import ManageJobs from './pages/Employer/ManageJobs'
 import ApplicationViewer from './pages/Employer/ApplicationViewer'
 import EmployerProfilePage from './pages/Employer/EmployerProfilePage'
 import ProtectedRoute from './Routes/ProtectedRoute'
@@ -35,7 +35,7 @@ function App() {
           {/* Protected Routes  */}
           <Route element={<ProtectedRoute requiredRole="employer"/>}>
             <Route path='/employer-dashboard' element={<EmployerDashboard/>}/>
-            <Route path='/post-jobs' element={<JobPostingForm/>}/>
+            <Route path='/post-job' element={<JobPostingForm/>}/>
             <Route path='/manage-jobs' element={<ManageJobs/>}/>
             <Route path='/applicants' element={<ApplicationViewer/>}/>
             <Route path='/company-profile' element={<EmployerProfilePage/>}/>
