@@ -1,8 +1,11 @@
 import React from 'react'
+import DashboardLayout from "../../components/layout/DashboardLayout"
 
 const EmployerProfilePage = () => {
   return (
-    <div>EmployerProfilePage</div>
+    <DashboardLayout activeMenu="company-profile">
+      EmployerProfilePage
+    </DashboardLayout>
   )
 }
 
