@@ -24,9 +24,9 @@ export const API_PATHS = {
         TOGGLE_CLOSE:(id)=>`/api/jobs/${id}/toggle-close`,
         DELETE_JOB:(id)=>`/api/jobs/${id}`,
 
-        SAVE_JOB: (id)=>`/api/save-jobs/${id}`,
-        UNSAVE_JOB: (id)=>`/api/save-jobs/${id}`,
-        GET_SAVED_JOB: "/api/save-jobs/my"
+        SAVE_JOB: (id)=>`/api/save-job/${id}`,
+        UNSAVE_JOB: (id)=>`/api/save-job/${id}`,
+        GET_SAVED_JOB: "/api/save-job/my"
     },
 
     APPLICATION:{
