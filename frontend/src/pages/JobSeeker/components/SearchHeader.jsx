@@ -2,13 +2,13 @@ import { MapPin, Search } from "lucide-react";
 
 const SearchHeader = ({ filters, handleFilterChange }) => {
   return (
-    <div className="bg-white/80 backdrop-blur-xl rounded-2xl shadow-xl shadow-gray-200 border border-white/20 p-4 lg:p-8 mb-6 lg:mb-10">
+    <div className="bg-white/80 backdrop-blur-xl rounded-2xl shadow-sm shadow-gray-200 border border-white/20 p-4 lg:p-8 mb-3 lg:mb-10">
       {/* Header Section */}
       <div className="flex flex-col gap-4 lg:gap-6">
-        <h1 className="text-2xl lg:text-2xl font-semibold text-gray-900 mb-2">
+        <h1 className="text-2xl lg:text-2xl font-semibold text-gray-900">
           Find Your Dream Job
         </h1>
-        <p className="text-gray-500 text-sm lg:text-base">
+        <p className="text-gray-500 text-sm lg:text-base mb-5">
           Discover opportunities that match your passion
         </p>
       </div>

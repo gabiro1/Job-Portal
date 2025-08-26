@@ -201,9 +201,13 @@ const JobSeekerDashboard = () => {
     }
   }
 
-  if (jobs.length === 0 && !loading) {
-    return <LoadingSpinner />;
-  }
+ if (loading) {
+  return <LoadingSpinner />;
+}
+
+if (error) {
+  return <div className="text-center text-red-500">{error}</div>;
+}
 
   return (
     <div className='bg-gradient-to-br from-blue-50 via-white to-purple-50'>
@@ -212,9 +216,9 @@ const JobSeekerDashboard = () => {
         <div className='max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 lg:py-8 '>
           {/* Search Header  */}
           <SearchHeader
-            filters={filters}
-            handleFiltersChange={handleFiltersChange}
-          />
+  filters={filters}
+  handleFilterChange={handleFiltersChange}
+/>
 
           <div className='flex gap-6 lg:gap-8'>
             {/* Desktop sidebar filter  */}
