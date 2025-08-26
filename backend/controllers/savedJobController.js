@@ -2,24 +2,40 @@ const SavedJob = require("../models/SavedJob");
 
 exports.saveJob = async (req, res) =>{
     try {
+        console.log("=== SAVE JOB REQUEST ===");
+        console.log("Job ID:", req.params.jobId);
+        console.log("User ID:", req.user._id);
+        console.log("User:", req.user);
 
         const exists = await SavedJob.findOne({job:req.params.jobId, jobseeker:req.user._id});
+        console.log("Existing saved job:", exists);
 
-        if (exists) return res.status(400).json({message:"Job already saved"});
+        if (exists) {
+            console.log("Job already saved, returning 400");
+            return res.status(400).json({message:"Job already saved"});
+        }
 
         const saved = await SavedJob.create({job:req.params.jobId, jobseeker:req.user._id})
+        console.log("Job saved successfully:", saved);
         res.status(201).json(saved)
         
     } catch (error) {
+        console.error("Error saving job:", error);
         res.status(500).json({message:"Failed to save job", error:error.message})
     }
 }
 
 exports.unsaveJob = async (req, res) =>{
     try {
-        await SavedJob.findOneAndDelete({job:req.params.jobId, jobseeker:req.user._id});
+        console.log("=== UNSAVE JOB REQUEST ===");
+        console.log("Job ID:", req.params.jobId);
+        console.log("User ID:", req.user._id);
+        
+        const result = await SavedJob.findOneAndDelete({job:req.params.jobId, jobseeker:req.user._id});
+        console.log("Unsave result:", result);
         res.json({message:"Job removed from saved list"});
     } catch (error) {
+        console.error("Error unsaving job:", error);
         res.status(500).json({message:"Failed to remove saved job", error:error.message})
     }
 }

@@ -2,7 +2,7 @@ import React from 'react'
 import { ChevronDown } from 'lucide-react'
 import { useNavigate } from 'react-router-dom'
 
-const ProfileDropdown = ({isOpen, onToggle, avatar, companyName, email, onLogout}) => {
+const ProfileDropdown = ({isOpen, onToggle, avatar, companyName, email, onLogout, userRole}) => {
 
     const navigate = useNavigate();
   return <div className='relative'>
@@ -35,7 +35,7 @@ const ProfileDropdown = ({isOpen, onToggle, avatar, companyName, email, onLogout
                 </div>
 
                 <a onClick={()=>navigate(userRole === 'jobseeker' ? '/profile' : '/company-profile')} 
-                className='block px-4 py-2 text-xs text-gray-700 hover:bg-gray-50 transition-colors'>
+                className='block px-4 py-2 text-xs text-gray-700 hover:bg-gray-50 transition-colors cursor-pointer'>
                     View Profile
                 </a>
                 <div className='border-t border-gray-100 mt-2 pt-2'>

@@ -74,7 +74,7 @@ exports.getJobs = async (req, res) =>{
             return {
                 ...job.toObject(),
                 isSaved: savedJobIds.includes(jobIdStr),
-                applcationStatus:appliedJobStatusMap[jobIdStr] || null,
+                applicationStatus:appliedJobStatusMap[jobIdStr] || null,
             };
         });
 
